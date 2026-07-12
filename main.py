@@ -5,12 +5,13 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from typing import List
 from tinydb import TinyDB
+# pyrefly: ignore [missing-import]
 from database import SessionLocal, Document, Chunk, Selection
 from dotenv import load_dotenv
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel('gemini-2.5-flash')
+model = genai.GenerativeModel('gemini-flash-latest')
 
 app = FastAPI(title="ProGuard RAG Service")
 history_db = TinyDB('history.json')
